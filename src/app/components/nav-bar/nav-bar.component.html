@@ -1,0 +1,15 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="navbar-brand">
+        <div class="nav-text">logo placeholder</div>
+    </div>
+    <div class="btn-group" dropdown *ngIf="isLoggedIn()">
+        <button id="button-animated" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle"
+            aria-controls="dropdown-animated">
+            {{ currentUser }} <span class="caret"></span>
+        </button>
+        <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+            <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>

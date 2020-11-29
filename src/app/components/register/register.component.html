@@ -1,0 +1,77 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<app-nav-bar></app-nav-bar>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Registration form</h3>
+                <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" formControlName="firstName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.firstName.errors }" />
+                        <div *ngIf="form.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="form.firstName.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" formControlName="lastName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.lastName.errors }" />
+                        <div *ngIf="submitted && form.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="form.lastName.errors.required">Last Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.email.errors }" />
+                        <div *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                            <div *ngIf="form.email.errors.required">Email is required</div>
+                            <div *ngIf="form.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
+                        <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                            <div *ngIf="form.password.errors.required">Password is required</div>
+                            <div *ngIf="form.password.errors.minlength">Password must be at least 8 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.confirmPassword.errors }" />
+                        <div *ngIf="submitted && form.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="form.confirmPassword.errors.required">Confirm Password is required</div>
+                            <div *ngIf="form.confirmPassword.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Color</label>
+                        <select formControlName="color" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.color.errors }">
+                            <option>Red</option>
+                            <option>Green</option>
+                            <option>Yellow</option>
+                            <option>Blue</option>
+                        </select>
+                        <div *ngIf="submitted && form.color.errors" class="invalid-feedback">
+                            <div *ngIf="form.color.errors.required">Color is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-button">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                    <div class="form-group form-button-right">
+                        <button type="button" class="btn btn-secondary" (click)="resetForm()">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
