@@ -25,6 +25,10 @@ export class AuthService {
     );
   }
 
+  get getCurrentUser() {
+    return localStorage.getItem('currentUser');
+  }
+
   logout(): void {
     this.currentUser = null;
     localStorage.removeItem('currentUser')
